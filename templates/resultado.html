@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Signo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-7">
+
+                {% if erro %}
+                <div class="alert alert-danger mt-5 text-center">
+                    {{ erro }}
+                    <div class="mt-3">
+                        <a href="/" class="btn btn-outline-danger">Voltar</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="card shadow-lg border-0 mt-5 overflow-hidden">
+                    <div class="card-header bg-primary text-white text-center py-4">
+                        <h2 class="mb-0 fw-bold">{{ signo.nome }}</h2>
+                        <p class="mb-0 opacity-75">Seu signo zodiacal</p>
+                    </div>
+
+                    <div class="card-body p-4 p-md-5">
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-4">
+                                <div class="info-box text-center p-3 rounded">
+                                    <small class="text-muted d-block">Elemento</small>
+                                    <strong class="fs-5">{{ signo.elemento }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info-box text-center p-3 rounded">
+                                    <small class="text-muted d-block">Planeta Regente</small>
+                                    <strong class="fs-5">{{ signo.planeta }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info-box text-center p-3 rounded">
+                                    <small class="text-muted d-block">Qualidade</small>
+                                    <strong class="fs-5">{{ signo.qualidade }}</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="fw-semibold mb-3">Sobre o signo</h5>
+                        <p class="text-secondary mb-4">{{ signo.descricao }}</p>
+
+                        <h5 class="fw-semibold mb-3">Principais características</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            {% for carac in signo.caracteristicas.split(', ') %}
+                            <span class="badge bg-light text-dark border px-3 py-2">{{ carac }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <a href="/" class="btn btn-outline-primary">← Consultar outra data</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

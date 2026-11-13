@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubra seu Signo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg border-0 mt-5">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <h1 class="fw-bold text-primary">Descubra seu Signo</h1>
+                            <p class="text-muted">Informe sua data de nascimento</p>
+                        </div>
+
+                        <form action="/resultado" method="POST">
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Data de Nascimento</label>
+                                <input type="date" class="form-control form-control-lg" name="data_nascimento" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Descobrir meu signo</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <p class="text-center text-muted mt-4 small">Python + Flask + SQLite</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
